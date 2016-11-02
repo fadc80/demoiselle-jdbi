@@ -4,6 +4,12 @@ stage("SCM Checkout") {
     }
 }
 
+stage("UnitTets") {
+    node {
+        mvn 'test'
+    }
+}
+
 def mvn(args) {
     withEnv(["PATH+MAVEN=${tool 'Maven 3.x'}/bin"]) {
         sh "mvn $args"
@@ -11,7 +17,7 @@ def mvn(args) {
 }
 
 def npm(args) {
-    withEnv(["PATH+NODE=${tool 'NodeJS'}/bin"]) {
+    withEnv(["PATH+NODE=${tool 'NodeJS 7.x'}/bin"]) {
         sh "npm $args"
     }
 }
