@@ -4,10 +4,19 @@ stage("SCM Checkout") {
     }
 }
 
-stage("UnitTets") {
+stage("Unit Tests") {
     node {
         mvn 'test'
         junit '**/target/surefire-reports/TEST-*.xml'
+    }
+}
+
+milestone 1
+stage("Deploy Integration Environment") {
+    lock(resource: 'integration-server', inversePrecedence: true) {
+        node {
+            mvn 'jboss-as:deploy'
+        }
     }
 }
 
