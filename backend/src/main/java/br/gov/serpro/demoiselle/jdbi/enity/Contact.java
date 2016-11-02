@@ -12,6 +12,28 @@ public class Contact {
 
 	private List<PhoneNumber> phoneNumberList;
 	
+	public Contact() {
+	}
+
+	public Contact(String firstName, String lastName) {
+		this(null, firstName, lastName);
+	}	
+	
+	public Contact(Long id, String firstName, String lastName) {
+		this(id, firstName, lastName, null);
+	}
+	
+	public Contact(String firstName, String lastName, List<PhoneNumber> phoneNumberList) {
+		this(null, firstName, lastName, phoneNumberList);
+	}	
+	
+	public Contact(Long id, String firstName, String lastName, List<PhoneNumber> phoneNumberList) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumberList = phoneNumberList;
+	}	
+	
 	public Long getId() {
 		return id;
 	}

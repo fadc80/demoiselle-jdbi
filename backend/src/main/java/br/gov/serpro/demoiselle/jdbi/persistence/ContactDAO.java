@@ -2,6 +2,8 @@ package br.gov.serpro.demoiselle.jdbi.persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
@@ -19,9 +21,9 @@ public class ContactDAO extends BaseDAO {
 				.bind("first_name", contact.getFirstName())
 				.bind("last_name", contact.getLastName())
 				.executeAndReturnGeneratedKeys(new ContactIdResultSetMapper())
-				.first());
-		
+				.first());		
 		return contact;
+		
 	}
 	
 	private static class ContactIdResultSetMapper implements ResultSetMapper<Long> {
@@ -29,6 +31,19 @@ public class ContactDAO extends BaseDAO {
 				final StatementContext statementContext) throws SQLException {
 			return resultSet.getLong(1);
 		}
+	}
+	
+	public List<Contact> findAll() {
+		
+		List<Contact> allContacts = new ArrayList<Contact>();
+		
+		getDbi().open().select("select * from contact").forEach((item) -> allContacts.add(new Contact(
+				(Long) item.get("id"), 
+				(String) item.get("first_name"), 
+				(String) item.get("last_name"))));
+	
+		return allContacts;
+		
 	}
 
 }

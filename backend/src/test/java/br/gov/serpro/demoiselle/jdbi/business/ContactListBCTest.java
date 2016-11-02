@@ -3,6 +3,8 @@ package br.gov.serpro.demoiselle.jdbi.business;
 import static org.mockito.Mockito.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -20,9 +22,7 @@ public class ContactListBCTest {
 	@Test
 	public void addContactWithoutPhoneNumbers() {
 
-		Contact contact = new Contact();
-		contact.setFirstName("Jorge");
-		contact.setLastName("Bush");
+		Contact contact = new Contact("Jorge", "Bush");
 
 		ContactDAO contactDAO = mock(ContactDAO.class);
 
@@ -39,30 +39,12 @@ public class ContactListBCTest {
 	}
 
 	@Test
-	public void addContactPhoneNumbers() {
+	public void addContactWithPhoneNumbers() {
 
-		Contact contact = new Contact();
-		contact.setFirstName("Bill");
-		contact.setLastName("Clinton");
-
-		ArrayList<PhoneNumber> phoneNumberList = new ArrayList<PhoneNumber>();
-
-		PhoneNumber phoneNumber1, phoneNumber2, phoneNumber3;
-
-		phoneNumber1 = new PhoneNumber();
-		phoneNumber1.setIt("86568413");
-
-		phoneNumber2 = new PhoneNumber();
-		phoneNumber2.setIt("97054832");
-
-		phoneNumber3 = new PhoneNumber();
-		phoneNumber3.setIt("30341384");
-
-		phoneNumberList.add(phoneNumber1);
-		phoneNumberList.add(phoneNumber2);
-		phoneNumberList.add(phoneNumber3);
-
-		contact.setPhoneNumberList(phoneNumberList);
+		Contact contact = new Contact("Bill", "Clinton", Arrays.asList(
+				new PhoneNumber("86568413"),
+				new PhoneNumber("97054832"),
+				new PhoneNumber("30341384")));
 
 		ContactDAO contactDAO = mock(ContactDAO.class);
 		PhoneNumberDAO phoneNumberDAO = mock(PhoneNumberDAO.class);
@@ -85,7 +67,76 @@ public class ContactListBCTest {
 		assertEquals(contact.getPhoneNumberList().get(2).getContactId(), new Long(1));
 
 	}
+	
+	@Test
+	public void findAllReturnZeroContacts() {
 
+		ContactDAO contactDAO = mock(ContactDAO.class);
+
+		when(contactDAO.findAll()).thenReturn(new ArrayList<Contact>());
+		
+		ContactListBC contactListBC = new ContactListBC(contactDAO, null);
+		
+		assertTrue(contactListBC.findAll().isEmpty());
+		
+	}
+
+	@Test
+	public void findAllReturnThreeContacts() {
+
+		ContactDAO contactDAO = mock(ContactDAO.class);
+		PhoneNumberDAO phoneNumberDAO = mock(PhoneNumberDAO.class);
+				
+		when(contactDAO.findAll()).thenReturn(Arrays.asList(
+				new Contact(1L, "Barack", "Obama"),
+				new Contact(2L, "Donald", "Thrump"),
+				new Contact(3L, "Hillary", "Clinton")));
+		
+		when(phoneNumberDAO.findById(1L)).thenReturn(Arrays.asList(
+				new PhoneNumber(1L, "46284658"), 
+				new PhoneNumber(1L, "15374064"),
+				new PhoneNumber(1L, "84625394")));
+
+		when(phoneNumberDAO.findById(2L)).thenReturn(Arrays.asList(
+				new PhoneNumber(2L, "31693947"), 
+				new PhoneNumber(2L, "97455248"),
+				new PhoneNumber(2L, "67453283")));
+		
+
+		when(phoneNumberDAO.findById(3L)).thenReturn(Arrays.asList(
+				new PhoneNumber(3L, "03827493"), 
+				new PhoneNumber(3L, "38485025"),
+				new PhoneNumber(3L, "28487632")));	
+		
+		ContactListBC contactListBC = new ContactListBC(contactDAO, phoneNumberDAO); 
+		
+		List<Contact> allContacts = contactListBC.findAll();
+		
+		assertEquals(allContacts.size(), 3);
+		
+		assertEquals(allContacts.get(0).getFirstName(), "Barack");
+	    assertEquals(allContacts.get(0).getLastName(), "Obama");
+		assertEquals(allContacts.get(0).getPhoneNumberList().size(), 3);
+	    assertEquals(allContacts.get(0).getPhoneNumberList().get(0).getIt(), "46284658");
+	    assertEquals(allContacts.get(0).getPhoneNumberList().get(1).getIt(), "15374064");
+	    assertEquals(allContacts.get(0).getPhoneNumberList().get(2).getIt(), "84625394");
+	    
+		assertEquals(allContacts.get(1).getFirstName(), "Donald");
+	    assertEquals(allContacts.get(1).getLastName(), "Thrump");
+		assertEquals(allContacts.get(1).getPhoneNumberList().size(), 3);
+	    assertEquals(allContacts.get(1).getPhoneNumberList().get(0).getIt(), "31693947");
+	    assertEquals(allContacts.get(1).getPhoneNumberList().get(1).getIt(), "97455248");
+	    assertEquals(allContacts.get(1).getPhoneNumberList().get(2).getIt(), "67453283");
+		
+		assertEquals(allContacts.get(2).getFirstName(), "Hillary");
+	    assertEquals(allContacts.get(2).getLastName(), "Clinton");
+		assertEquals(allContacts.get(2).getPhoneNumberList().size(), 3);
+	    assertEquals(allContacts.get(2).getPhoneNumberList().get(0).getIt(), "03827493");
+	    assertEquals(allContacts.get(2).getPhoneNumberList().get(1).getIt(), "38485025");
+	    assertEquals(allContacts.get(2).getPhoneNumberList().get(2).getIt(), "28487632");
+		
+	}	
+	
 	private Answer<PhoneNumber> createPhoneNumberDAOInsertAnswer() {
 		return new Answer<PhoneNumber>() {
 			public PhoneNumber answer(InvocationOnMock invocation) throws Throwable {

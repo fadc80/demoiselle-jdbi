@@ -1,5 +1,8 @@
 package br.gov.serpro.demoiselle.jdbi.persistence;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
 import br.gov.serpro.demoiselle.jdbi.enity.PhoneNumber;
 
@@ -18,6 +21,18 @@ public class PhoneNumberDAO extends BaseDAO{
 		
 		return phoneNumber;
 		
+	}
+	
+	public List<PhoneNumber> findById(Long contactId) {
+		
+		List<PhoneNumber> allPhoneNumbers = new ArrayList<PhoneNumber>();
+		
+		getDbi().open().createQuery("select * from phone_number where contact_id = :id")
+			.bind("id", contactId).list().forEach((item) -> allPhoneNumbers.add(new PhoneNumber(
+					(Long) item.get("contact_id"),
+					(String) item.get("it"))));
+	
+		return allPhoneNumbers;
 	}
 	
 }

@@ -6,6 +6,18 @@ public class PhoneNumber {
 	
 	private String it;
 	
+	public PhoneNumber() {
+	}
+
+	public PhoneNumber(String it) {
+		this(null, it);
+	}	
+	
+	public PhoneNumber(Long contactId, String it) {
+		this.contactId = contactId;
+		this.it = it;
+	}
+	
 	public Long getContactId() {
 		return contactId;
 	}

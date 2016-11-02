@@ -48,4 +48,12 @@ public class ContactListBC {
 	public void add(Long contactId, PhoneNumber phoneNumber) {
 		phoneNumberDAO.insert(contactId, phoneNumber);
 	}
+	
+	public List<Contact> findAll() {
+		List<Contact> allContacts = contactDAO.findAll();
+		for (Contact contact: allContacts) {
+			contact.setPhoneNumberList(phoneNumberDAO.findById(contact.getId()));
+		}
+		return allContacts;
+	}
 }
