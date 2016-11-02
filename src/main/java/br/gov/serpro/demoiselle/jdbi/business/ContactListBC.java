@@ -8,23 +8,31 @@ import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
 import br.gov.serpro.demoiselle.jdbi.enity.Contact;
 import br.gov.serpro.demoiselle.jdbi.enity.PhoneNumber;
-import br.gov.serpro.demoiselle.jdbi.persistence.PersonDAO;
+import br.gov.serpro.demoiselle.jdbi.persistence.ContactDAO;
 import br.gov.serpro.demoiselle.jdbi.persistence.PhoneNumberDAO;
 
 @BusinessController
 public class ContactListBC {
 	
 	@Inject
-	private PersonDAO personDAO;
+	private ContactDAO contactDAO;
 	
 	@Inject
 	private PhoneNumberDAO phoneNumberDAO;
 
+	public ContactListBC() {
+	}
+	
+	public ContactListBC(ContactDAO contactDAO, PhoneNumberDAO phoneNumberDAO) {
+		this.contactDAO = contactDAO;
+		this.phoneNumberDAO = phoneNumberDAO;
+	}	
+	
 	@Transactional
-	public Long add(Contact contact) {
-		personDAO.insert(contact);
+	public Contact add(Contact contact) {
+		contactDAO.insert(contact);
 		add(contact.getId(), contact.getPhoneNumberList());
-		return contact.getId();
+		return contact;
 	}
 
 	@Transactional
@@ -38,7 +46,6 @@ public class ContactListBC {
 
 	@Transactional
 	public void add(Long contactId, PhoneNumber phoneNumber) {
-		phoneNumber.setContactId(contactId);
-		phoneNumberDAO.insert(phoneNumber);
+		phoneNumberDAO.insert(contactId, phoneNumber);
 	}
 }
