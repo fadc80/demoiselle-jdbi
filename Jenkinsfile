@@ -15,7 +15,7 @@ milestone 1
 stage("Deploy Integration Environment") {
     lock(resource: 'integration-server', inversePrecedence: true) {
         node {
-            mvn 'jboss-as:deploy-only'
+            mvn '-f backend jboss-as:deploy-only'
         }
     }
 }
