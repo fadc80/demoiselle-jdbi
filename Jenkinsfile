@@ -6,8 +6,7 @@ stage("SCM Checkout") {
 
 stage("Unit Tests") {
     node {
-        sh 'cd backend'
-        mvn 'clean test'
+        mvn '-f backend clean test'
         junit '**/target/surefire-reports/TEST-*.xml'
     }
 }
