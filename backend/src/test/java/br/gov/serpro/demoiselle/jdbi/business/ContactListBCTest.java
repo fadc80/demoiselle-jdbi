@@ -88,7 +88,6 @@ public class ContactListBCTest {
 
 	private Answer<PhoneNumber> createPhoneNumberDAOInsertAnswer() {
 		return new Answer<PhoneNumber>() {
-			@Override
 			public PhoneNumber answer(InvocationOnMock invocation) throws Throwable {
 				Long contactId = invocation.getArgumentAt(0, Long.class);
 				PhoneNumber phoneNumber = invocation.getArgumentAt(1, PhoneNumber.class);
@@ -100,7 +99,6 @@ public class ContactListBCTest {
 
 	private Answer<Contact> createContactDAOInsertAnwser() {
 		return new Answer<Contact>() {
-			@Override
 			public Contact answer(InvocationOnMock invocation) throws Throwable {
 				Contact contact = invocation.getArgumentAt(0, Contact.class);
 				contact.setId(1L);
