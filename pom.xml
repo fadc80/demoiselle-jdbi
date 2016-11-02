@@ -14,16 +14,16 @@
 		<finalName>demoiselle-jdbi</finalName>
 		<plugins>
 			<plugin>
-            	<groupId>org.jboss.as.plugins</groupId>
-            	<artifactId>jboss-as-maven-plugin</artifactId>
-            	<version>7.9.Final</version>
-            	<configuration>
-                	<force>true</force>
-                	<hostname>localhost</hostname>
-                	<username>admin</username>
-                	<password>sotnas6263#</password>
-            	</configuration>
-        	</plugin>
+				<groupId>org.jboss.as.plugins</groupId>
+				<artifactId>jboss-as-maven-plugin</artifactId>
+				<version>7.9.Final</version>
+				<configuration>
+					<force>true</force>
+					<hostname>localhost</hostname>
+					<username>admin</username>
+					<password>sotnas6263#</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencyManagement>
@@ -47,7 +47,7 @@
 			<groupId>br.gov.frameworkdemoiselle</groupId>
 			<artifactId>demoiselle-rest</artifactId>
 			<version>2.5.1</version>
-		</dependency>		
+		</dependency>
 		<dependency>
 			<groupId>br.gov.frameworkdemoiselle</groupId>
 			<artifactId>demoiselle-jdbc</artifactId>
@@ -57,6 +57,18 @@
 			<groupId>org.jdbi</groupId>
 			<artifactId>jdbi</artifactId>
 			<version>2.77</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

@@ -16,8 +16,8 @@ import br.gov.serpro.demoiselle.jdbi.business.ContactListBC;
 import br.gov.serpro.demoiselle.jdbi.enity.Contact;
 
 @Path("/contacts")
-@Consumes({MediaType.APPLICATION_JSON})
-@Produces({MediaType.APPLICATION_JSON})
+@Consumes({ MediaType.APPLICATION_JSON })
+@Produces({ MediaType.APPLICATION_JSON })
 public class ContactListREST {
 
 	@Inject
@@ -25,11 +25,11 @@ public class ContactListREST {
 
 	@POST
 	public Response add(Contact contact, @Context UriInfo uri) {
-		return Response.created(contactUri(uri, bc.add(contact))).build();
+		return Response.created(contactUri(uri, bc.add(contact).getId())).entity(contact).build();
 	}
-	
+
 	private URI contactUri(UriInfo uri, Long id) {
 		return uri.getAbsolutePathBuilder().path(String.valueOf(id)).build();
 	}
-	
+
 }
