@@ -1,1 +1,1 @@
-# demoiselle-jdbi
+# simple-contact-list
