@@ -1,4 +1,4 @@
-package br.gov.serpro.demoiselle.jdbi.persistence;
+package sample.contact.list.persistence;
 
 import javax.inject.Inject;
 

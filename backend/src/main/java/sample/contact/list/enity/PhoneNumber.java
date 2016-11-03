@@ -1,4 +1,4 @@
-package br.gov.serpro.demoiselle.jdbi.enity;
+package sample.contact.list.enity;
 
 public class PhoneNumber {
 	

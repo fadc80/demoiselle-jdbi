@@ -1,4 +1,4 @@
-package br.gov.serpro.demoiselle.jdbi.business;
+package sample.contact.list.test.business;
 
 import static org.mockito.Mockito.*;
 
@@ -12,10 +12,12 @@ import static org.junit.Assert.*;
 
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import br.gov.serpro.demoiselle.jdbi.enity.Contact;
-import br.gov.serpro.demoiselle.jdbi.enity.PhoneNumber;
-import br.gov.serpro.demoiselle.jdbi.persistence.ContactDAO;
-import br.gov.serpro.demoiselle.jdbi.persistence.PhoneNumberDAO;
+
+import sample.contact.list.business.ContactListBC;
+import sample.contact.list.enity.Contact;
+import sample.contact.list.enity.PhoneNumber;
+import sample.contact.list.persistence.ContactDAO;
+import sample.contact.list.persistence.PhoneNumberDAO;
 
 public class ContactListBCTest {
 

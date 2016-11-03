@@ -1,4 +1,4 @@
-package br.gov.serpro.demoiselle.jdbi.service;
+package sample.contact.list.service;
 
 import java.net.URI;
 
@@ -13,8 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.gov.serpro.demoiselle.jdbi.business.ContactListBC;
-import br.gov.serpro.demoiselle.jdbi.enity.Contact;
+import sample.contact.list.business.ContactListBC;
+import sample.contact.list.enity.Contact;
 
 @Path("/contacts")
 @Consumes({ MediaType.APPLICATION_JSON })

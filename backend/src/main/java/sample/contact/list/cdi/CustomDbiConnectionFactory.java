@@ -1,4 +1,4 @@
-package br.gov.serpro.demoiselle.jdbi.cdi;
+package sample.contact.list.cdi;
 
 import java.sql.Connection;
 import java.sql.SQLException;

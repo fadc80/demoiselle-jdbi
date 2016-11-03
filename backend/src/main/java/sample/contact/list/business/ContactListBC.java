@@ -1,4 +1,4 @@
-package br.gov.serpro.demoiselle.jdbi.business;
+package sample.contact.list.business;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import javax.inject.Inject;
 
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
-import br.gov.serpro.demoiselle.jdbi.enity.Contact;
-import br.gov.serpro.demoiselle.jdbi.enity.PhoneNumber;
-import br.gov.serpro.demoiselle.jdbi.persistence.ContactDAO;
-import br.gov.serpro.demoiselle.jdbi.persistence.PhoneNumberDAO;
+import sample.contact.list.enity.Contact;
+import sample.contact.list.enity.PhoneNumber;
+import sample.contact.list.persistence.ContactDAO;
+import sample.contact.list.persistence.PhoneNumberDAO;
 
 @BusinessController
 public class ContactListBC {

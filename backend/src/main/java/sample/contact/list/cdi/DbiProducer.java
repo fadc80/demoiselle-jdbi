@@ -1,4 +1,4 @@
-package br.gov.serpro.demoiselle.jdbi.cdi;
+package sample.contact.list.cdi;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
