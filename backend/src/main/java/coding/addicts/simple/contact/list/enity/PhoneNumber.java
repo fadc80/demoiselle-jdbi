@@ -1,4 +1,4 @@
-package coding.addicts.simple.list.enity;
+package coding.addicts.simple.contact.list.enity;
 
 public class PhoneNumber {
 	
