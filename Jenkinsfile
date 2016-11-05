@@ -9,11 +9,13 @@ stage("Unit Tests") {
     node {
         mvn '-f backend clean package'
         junit '**/target/surefire-reports/TEST-*.xml'
+        npm 'install'
+        npm 'test'
     }
 }
 
 milestone 1
-stage("Deploy Integration Environment") {
+stage("Deploy Integration") {
     lock(resource: 'integration-server', inversePrecedence: true) {
         node {
             mvn '-f backend jboss-as:deploy-only'
