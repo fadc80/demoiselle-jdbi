@@ -18,7 +18,7 @@ const CONTACTS: Contact[] = [
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-    <h2>Contacts</h2>
+    <h2>All Contacts</h2>
     <ul class="contacts">
       <li *ngFor="let contact of contacts"
         [class.selected]="contact === selectedContact"
@@ -43,7 +43,7 @@ const CONTACTS: Contact[] = [
       position: relative;
       left: 0;
       background-color: #EEE;
-      margin: .2em;
+      margin: .4em;
       padding: .3em 0;
       height: 1.6em;
       border-radius: 4px;

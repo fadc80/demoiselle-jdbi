@@ -1,4 +1,4 @@
-package sample.contact.list.persistence;
+package coding.addicts.simple.list.persistence;
 
 import javax.inject.Inject;
 

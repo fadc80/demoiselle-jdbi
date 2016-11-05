@@ -1,4 +1,4 @@
-package sample.contact.list.service;
+package coding.addicts.simple.list.service;
 
 import java.net.URI;
 
@@ -13,8 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import sample.contact.list.business.ContactListBC;
-import sample.contact.list.enity.Contact;
+import coding.addicts.simple.contact.list.business.ContactListBC;
+import coding.addicts.simple.list.enity.Contact;
 
 @Path("/contacts")
 @Consumes({ MediaType.APPLICATION_JSON })

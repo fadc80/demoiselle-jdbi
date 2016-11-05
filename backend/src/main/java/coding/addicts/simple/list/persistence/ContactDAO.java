@@ -1,4 +1,4 @@
-package sample.contact.list.persistence;
+package coding.addicts.simple.list.persistence;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import org.skife.jdbi.v2.StatementContext;
 import org.skife.jdbi.v2.tweak.ResultSetMapper;
 
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
-import sample.contact.list.enity.Contact;
+import coding.addicts.simple.list.enity.Contact;
 
 @PersistenceController
 public class ContactDAO extends BaseDAO {

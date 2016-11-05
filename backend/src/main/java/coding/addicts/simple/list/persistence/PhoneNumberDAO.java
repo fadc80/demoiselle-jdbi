@@ -1,10 +1,10 @@
-package sample.contact.list.persistence;
+package coding.addicts.simple.list.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.gov.frameworkdemoiselle.stereotype.PersistenceController;
-import sample.contact.list.enity.PhoneNumber;
+import coding.addicts.simple.list.enity.PhoneNumber;
 
 @PersistenceController
 public class PhoneNumberDAO extends BaseDAO{

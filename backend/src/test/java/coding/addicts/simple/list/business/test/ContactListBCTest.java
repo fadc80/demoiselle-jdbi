@@ -1,4 +1,4 @@
-package sample.contact.list.test.business;
+package coding.addicts.simple.list.business.test;
 
 import static org.mockito.Mockito.*;
 
@@ -13,11 +13,11 @@ import static org.junit.Assert.*;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import sample.contact.list.business.ContactListBC;
-import sample.contact.list.enity.Contact;
-import sample.contact.list.enity.PhoneNumber;
-import sample.contact.list.persistence.ContactDAO;
-import sample.contact.list.persistence.PhoneNumberDAO;
+import coding.addicts.simple.contact.list.business.ContactListBC;
+import coding.addicts.simple.list.enity.Contact;
+import coding.addicts.simple.list.enity.PhoneNumber;
+import coding.addicts.simple.list.persistence.ContactDAO;
+import coding.addicts.simple.list.persistence.PhoneNumberDAO;
 
 public class ContactListBCTest {
 

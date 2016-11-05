@@ -1,4 +1,4 @@
-package sample.contact.list.enity;
+package coding.addicts.simple.list.enity;
 
 import java.util.List;
 

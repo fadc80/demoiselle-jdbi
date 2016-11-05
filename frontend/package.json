@@ -1,6 +1,6 @@
 {
-  "name": "contact-list",
-  "description": "Contact List",
+  "name": "simple-contact-list",
+  "description": "Simple Contact List",
   "version": "0.0.1",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",

@@ -1,4 +1,4 @@
-package sample.contact.list.business;
+package coding.addicts.simple.contact.list.business;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import javax.inject.Inject;
 
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
-import sample.contact.list.enity.Contact;
-import sample.contact.list.enity.PhoneNumber;
-import sample.contact.list.persistence.ContactDAO;
-import sample.contact.list.persistence.PhoneNumberDAO;
+import coding.addicts.simple.list.enity.Contact;
+import coding.addicts.simple.list.enity.PhoneNumber;
+import coding.addicts.simple.list.persistence.ContactDAO;
+import coding.addicts.simple.list.persistence.PhoneNumberDAO;
 
 @BusinessController
 public class ContactListBC {

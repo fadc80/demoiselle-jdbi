@@ -1,4 +1,4 @@
-package sample.contact.list.cdi;
+package coding.addicts.simple.contact.list.cdi;
 
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
