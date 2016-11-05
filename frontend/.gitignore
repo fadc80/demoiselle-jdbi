@@ -2,3 +2,8 @@ node_modules
 npm-debug.log
 *.js
 *.js.map
+
+!karma.conf.js  
+!karma-test-shim.js  
+!systemjs.config.js
+!systemjs.config.extras.js
