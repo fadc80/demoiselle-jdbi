@@ -18,12 +18,13 @@ const CONTACTS: Contact[] = [
   selector: 'my-app',
   template: `
     <h1>{{title}}</h1>
-    <h2>All Contacts</h2>
+    <h2><b>{{subtitle}}</b></h2>
     <ul class="contacts">
       <li *ngFor="let contact of contacts"
         [class.selected]="contact === selectedContact"
         (click)="onSelect(contact)">
-        <span class="badge">{{contact.id}}</span> {{contact.firstName}} {{contact.lastName}}
+        <span class="badge">{{contact.id}}</span> 
+          {{contact.firstName}} {{contact.lastName}}
       </li>
     </ul>
   `,
@@ -79,7 +80,8 @@ const CONTACTS: Contact[] = [
 })
 
 export class AppComponent { 
-  title = 'Contact List';
+  title = 'Simple Contact List';
+  subtitle = 'Contacts';
   contacts = CONTACTS;
   selectedContact: Contact;
 
