@@ -29,10 +29,8 @@
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>7.9.Final</version>
 				<configuration>
+                                        <id>integration-server</id>
 					<force>true</force>
-					<hostname>localhost</hostname>
-					<username>admin</username>
-					<password>sotnas6263#</password>
 				</configuration>
 			</plugin>
 		</plugins>
