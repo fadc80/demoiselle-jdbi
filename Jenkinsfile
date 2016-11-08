@@ -25,10 +25,10 @@ stage("Deploy Integration") {
 
 def mvn(args) {
     withEnv(["PATH+MAVEN=${tool 'Maven 3.x'}/bin"]) {
-
       configFileProvider(
         [configFile(fileId: 'simple-contact-list-settings', variable: 'MAVEN_SETTINGS')]) {
         sh "mvn -s $MAVEN_SETTINGS $args"
+      }
     }
 }
 
