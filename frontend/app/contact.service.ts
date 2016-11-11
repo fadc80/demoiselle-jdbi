@@ -6,7 +6,7 @@ import 'rxjs/add/operator/toPromise';
 import { Contact } from './contact';
 
 @Injectable()
-export class ContactListService {
+export class ContactService {
 
   constructor(private http: Http) { }
 
