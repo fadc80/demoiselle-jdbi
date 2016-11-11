@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<h2><b>{{subtitle}}</b></h2>
+<ul class="contacts">
+    <li *ngFor="let contact of contacts"
+    [class.selected]="contact === selectedContact"
+    (click)="onSelect(contact)">
+    <span class="badge">{{contact.id}}</span> 
+        {{contact.firstName}} {{contact.lastName}}
+    </li>
+</ul>
