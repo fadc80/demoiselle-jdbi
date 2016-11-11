@@ -1,18 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Contact }   from './contact';
 
-export class Contact {
-  id: number;
-  firstName: string;
-  lastName: String;
-};
-
-const CONTACTS: Contact[] = [
-  { id: 1, firstName: 'John',    lastName: 'Kennedy' },
-  { id: 2, firstName: 'Richard', lastName: 'Nixon' },
-  { id: 3, firstName: 'Jorge',   lastName: 'Bush' },
-  { id: 4, firstName: 'Jimmy',   lastName: 'Carter' },
-  { id: 5, firstName: 'Harry',   lastName: 'Thruman' }
-];
+import { ContactListService } from './contact-list.service';
 
 @Component({
   selector: 'my-app',
@@ -79,11 +68,18 @@ const CONTACTS: Contact[] = [
   `]
 })
 
-export class AppComponent { 
+export class AppComponent implements OnInit { 
   title = 'Simple Contact List';
   subtitle = 'Contacts';
-  contacts = CONTACTS;
+  contacts: Contact[];
   selectedContact: Contact;
+
+  constructor(private contactListService: ContactListService) { }
+
+  ngOnInit(): void {
+    this.contactListService.findAll().then(
+      (contacts)=>this.contacts=contacts);
+  }
 
   onSelect(contact: Contact): void {
     this.selectedContact = contact;
