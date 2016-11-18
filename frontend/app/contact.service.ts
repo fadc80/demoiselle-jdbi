@@ -11,8 +11,8 @@ export class ContactService {
   constructor(private http: Http) { }
 
   public findAll(): Promise<Contact[]> {
-    return this.http.get('http://localhost:8080/simple-contact-list/rest/contacts')
-      .toPromise().then((response)=>response.json().data as Contact[])
+    return this.http.get('/rest/contacts')
+      .toPromise().then(response=> response.json() as Contact[])
       .catch(this.handleError);
   }
 

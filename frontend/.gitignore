@@ -3,6 +3,7 @@ npm-debug.log
 *.js
 *.js.map
 
+!bs-config.js
 !karma.conf.js  
 !karma-test-shim.js  
 !systemjs.config.js

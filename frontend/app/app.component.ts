@@ -1,29 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Contact }   from './contact';
-
-import { ContactService } from './contact.service';
+import { Component } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
   selector: 'my-app',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.css']
+  template: `
+    <h1>{{title}}</h1>
+    <h2>{{subtitle}}</h2>
+    <contacts></contacts>  
+  `
 })
 
-export class AppComponent implements OnInit { 
+export class AppComponent { 
   title = 'Simple Contact List';
   subtitle = 'Contacts';
-  contacts: Contact[];
-  selectedContact: Contact;
-
-  constructor(private contactService: ContactService) { }
-
-  ngOnInit(): void {
-    this.contactService.findAll().then(
-      (contacts)=>this.contacts=contacts);
-  }
-
-  onSelect(contact: Contact): void {
-    this.selectedContact = contact;
-  }
 };
