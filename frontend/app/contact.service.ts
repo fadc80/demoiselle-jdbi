@@ -5,14 +5,18 @@ import 'rxjs/add/operator/toPromise';
 
 import { Contact } from './contact';
 
+export interface IContactService {
+  findAll(): Promise<Contact[]>;
+}
+
 @Injectable()
-export class ContactService {
+export class ContactService implements IContactService {
 
   constructor(private http: Http) { }
 
   public findAll(): Promise<Contact[]> {
     return this.http.get('/rest/contacts')
-      .toPromise().then(response=> response.json() as Contact[])
+      .toPromise().then(response => response.json() as Contact[])
       .catch(this.handleError);
   }
 
