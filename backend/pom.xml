@@ -29,7 +29,7 @@
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>7.9.Final</version>
 				<configuration>
-                                        <id>integration-server</id>
+                    <id>integration-server</id>
 					<force>true</force>
 				</configuration>
 			</plugin>
