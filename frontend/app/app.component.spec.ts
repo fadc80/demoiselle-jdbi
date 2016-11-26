@@ -4,8 +4,8 @@ import { DebugElement } from '@angular/core';
 import { Http } from '@angular/http';
 import { By } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ContactService } from './contact.service';
-import { ContactServiceMock } from './contact.service.mock'
+import { ContactsService } from './contacts.service';
+import { ContactsServiceMock } from './contacts.service.mock'
 import { ContactsComponent } from './contacts.component'
 
 let fixture: ComponentFixture<AppComponent>;
@@ -17,7 +17,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     return TestBed.configureTestingModule({
       declarations: [ AppComponent, ContactsComponent ],
-      providers: [{provide: ContactService, useValue: new ContactServiceMock()},]
+      providers: [{provide: ContactsService, useValue: new ContactsServiceMock()},]
     }).compileComponents().then(()=>{
         fixture = TestBed.createComponent(AppComponent);
         component = fixture.componentInstance;

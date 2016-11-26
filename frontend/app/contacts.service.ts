@@ -5,12 +5,12 @@ import 'rxjs/add/operator/toPromise';
 
 import { Contact } from './contact';
 
-export interface IContactService {
+export interface IContactsService {
   findAll(): Promise<Contact[]>;
 }
 
 @Injectable()
-export class ContactService implements IContactService {
+export class ContactsService implements IContactsService {
 
   constructor(private http: Http) { }
 

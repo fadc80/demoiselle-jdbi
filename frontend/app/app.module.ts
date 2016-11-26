@@ -4,7 +4,7 @@ import { HttpModule }    from '@angular/http';
 
 import { AppComponent }      from './app.component';
 import { ContactsComponent } from './contacts.component';
-import { ContactService }    from './contact.service';
+import { ContactsService }    from './contacts.service';
 
 @NgModule({
   imports: [ 
@@ -15,7 +15,7 @@ import { ContactService }    from './contact.service';
     AppComponent, 
     ContactsComponent 
   ],
-  providers: [ ContactService ],
+  providers: [ ContactsService ],
   bootstrap: [ AppComponent ]
 })
 
