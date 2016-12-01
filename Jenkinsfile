@@ -10,7 +10,7 @@ stage("Unit Tests") {
         mvn '-f backend clean package'
         junit '**/target/surefire-reports/TEST-*.xml'
         npm 'install --prefix frontend frontend'
-        npm 'run test-once --prefix frontend'
+        npm 'run test-xvfb --prefix frontend'
     }
 }
 
