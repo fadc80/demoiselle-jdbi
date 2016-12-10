@@ -20,10 +20,9 @@
 				<version>3.0.0</version>
 				<configuration>
 					<packagingExcludes>
-						WEB-INF/classes/liquibase.properties,
-						WEB-INF/classes/db.changelog.xml,
-						WEB-INF/classes/table-contact.csv,
-						WEB-INF/classes/table-phone-number.csv
+						WEB-INF/classes/data/*.csv,
+						WEB-INF/classes/db.changelog*.xml,
+						WEB-INF/classes/liquibase.properties
 					</packagingExcludes>
 				</configuration>
 			</plugin>
