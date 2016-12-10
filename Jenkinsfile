@@ -7,7 +7,7 @@ stage("SCM Checkout") {
 
 stage("Unit Tests") {
     node {
-        mvn '-f backend clean package'
+        mvn '-f backend clean package -P db-update'
         junit '**/target/surefire-reports/TEST-*.xml'
         npm 'install --prefix frontend frontend'
         npm 'run test-xvfb --prefix frontend'
