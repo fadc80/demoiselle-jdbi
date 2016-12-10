@@ -16,6 +16,18 @@
 		<finalName>simple-contact-list</finalName>
 		<plugins>
 			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<packagingExcludes>
+						WEB-INF/classes/liquibase.properties,
+						WEB-INF/classes/db.changelog.xml,
+						WEB-INF/classes/table-contact.csv,
+						WEB-INF/classes/table-phone-number.csv
+					</packagingExcludes>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.6.0</version>
@@ -29,11 +41,17 @@
 				<artifactId>jboss-as-maven-plugin</artifactId>
 				<version>7.9.Final</version>
 				<configuration>
-                    <id>integration-server</id>
+					<id>integration-server</id>
 					<force>true</force>
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 	</build>
 	<dependencyManagement>
 		<dependencies>
@@ -68,6 +86,18 @@
 			<version>2.77</version>
 		</dependency>
 		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>3.5.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1200-jdbc41</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
@@ -80,4 +110,29 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<profiles>
+		<profile>
+			<id>db-update</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.liquibase</groupId>
+						<artifactId>liquibase-maven-plugin</artifactId>
+						<version>3.0.5</version>
+						<configuration>
+							<propertyFile>liquibase.properties</propertyFile>
+						</configuration>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>update</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
